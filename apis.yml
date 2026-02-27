@@ -1,0 +1,87 @@
+name: ArchiMate
+description: 'ArchiMate is an open and independent enterprise architecture modeling language  to support the description, analysis and visualization of architecture within  and across business domains in an unambiguous way.
+
+  '
+image: https://www.opengroup.org/archimate-forum/archimate-overview
+tags:
+- Enterprise Architecture
+- Modeling
+- Architecture Framework
+- Business Architecture
+- Application Architecture
+- Technology Architecture
+created: '2024-01-01'
+modified: '2024-01-01'
+url: https://www.opengroup.org/archimate-forum
+specificationVersion: '0.18'
+apis:
+- name: ArchiMate Model Exchange API
+  description: 'API for exchanging ArchiMate models between tools and repositories using  the Open Group ArchiMate Model Exchange File Format.
+
+    '
+  image: https://www.opengroup.org/archimate-forum/archimate-overview
+  humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
+  baseURL: https://api.example.com/archimate/v1
+  tags:
+  - Model Exchange
+  - XML
+  - Enterprise Architecture
+  properties:
+  - type: Documentation
+    url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: OpenAPI
+    url: https://api.example.com/archimate/openapi.json
+  - type: Swagger
+    url: https://api.example.com/archimate/swagger.json
+  - type: Schema
+    url: https://www.opengroup.org/xsd/archimate/
+  contact:
+  - FN: The Open Group
+    email: archimate-forum@opengroup.org
+    url: https://www.opengroup.org/archimate-forum
+- name: ArchiMate Repository API
+  description: 'RESTful API for accessing and managing ArchiMate models, elements,  relationships, and views stored in a central repository.
+
+    '
+  image: https://www.opengroup.org/archimate-forum/archimate-overview
+  humanURL: https://www.opengroup.org/archimate-forum
+  baseURL: https://api.example.com/archimate/repository/v1
+  tags:
+  - Repository
+  - REST API
+  - CRUD Operations
+  - Model Management
+  properties:
+  - type: Documentation
+    url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: OpenAPI
+    url: https://api.example.com/archimate/repository/openapi.yaml
+  - type: Authentication
+    url: https://api.example.com/archimate/auth
+  contact:
+  - FN: The Open Group
+    email: archimate-forum@opengroup.org
+common:
+- type: Website
+  url: https://www.opengroup.org/archimate-forum
+- type: Specification
+  url: https://pubs.opengroup.org/architecture/archimate32-doc/
+- type: Getting Started
+  url: https://www.opengroup.org/archimate-forum/archimate-overview
+- type: Standards
+  url: https://www.opengroup.org/archimate-forum/archimate-standard
+- type: XML Schema
+  url: https://www.opengroup.org/xsd/archimate/
+- type: Certification
+  url: https://www.opengroup.org/certifications/archimate
+- type: Tools
+  url: https://www.opengroup.org/archimate-forum/archimate-tools
+- type: Community
+  url: https://www.opengroup.org/archimate-forum/forums
+- type: Blog
+  url: https://blog.opengroup.org/tag/archimate/
+maintainers:
+- FN: The Open Group ArchiMate Forum
+  email: archimate-forum@opengroup.org
+  url: https://www.opengroup.org/archimate-forum
+include: []
