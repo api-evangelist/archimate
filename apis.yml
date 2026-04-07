@@ -5,11 +5,11 @@ description: >-
   business domains in an unambiguous way.
 image: https://www.opengroup.org/archimate-forum/archimate-overview
 tags:
-  - Enterprise Architecture
-  - Modeling
+  - Application Architecture
   - Architecture Framework
   - Business Architecture
-  - Application Architecture
+  - Enterprise Architecture
+  - Modeling
   - Technology Architecture
 created: '2024-01-01'
 modified: '2024-01-01'
@@ -24,9 +24,9 @@ apis:
     humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
     baseURL: https://api.example.com/archimate/v1
     tags:
+      - Enterprise Architecture
       - Model Exchange
       - XML
-      - Enterprise Architecture
     properties:
       - type: Documentation
         url: https://pubs.opengroup.org/architecture/archimate3-doc/
@@ -48,10 +48,10 @@ apis:
     humanURL: https://www.opengroup.org/archimate-forum
     baseURL: https://api.example.com/archimate/repository/v1
     tags:
-      - Repository
-      - REST API
       - CRUD Operations
       - Model Management
+      - Repository
+      - REST API
     properties:
       - type: Documentation
         url: https://pubs.opengroup.org/architecture/archimate3-doc/
