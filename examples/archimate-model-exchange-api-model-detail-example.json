@@ -1,0 +1,9 @@
+{
+  "id": "model-001",
+  "name": "Enterprise Architecture Baseline",
+  "version": "2025.1",
+  "language": "ArchiMate 3.2",
+  "elementCount": 85,
+  "relationshipCount": 120,
+  "viewCount": 12
+}

@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "properties": {
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "name": {},
+          "version": {},
+          "language": {},
+          "createdAt": {},
+          "modifiedAt": {}
+        }
+      }
+    },
+    "totalCount": {
+      "type": "int32",
+      "description": "Total number of models",
+      "example": 5
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-structure/archimate-model-exchange-api-model-list-structure.json",
+  "name": "ModelList"
+}

@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Relationship identifier",
+      "example": "rel-001"
+    },
+    "type": {
+      "type": "string",
+      "description": "ArchiMate relationship type",
+      "enum": [
+        "Association",
+        "Composition",
+        "Aggregation",
+        "Assignment",
+        "Realization",
+        "Serving",
+        "Access",
+        "Influence",
+        "Triggering",
+        "Flow",
+        "Specialization"
+      ],
+      "example": "Assignment"
+    },
+    "sourceId": {
+      "type": "string",
+      "description": "Source element identifier",
+      "example": "elem-001"
+    },
+    "targetId": {
+      "type": "string",
+      "description": "Target element identifier",
+      "example": "elem-002"
+    },
+    "label": {
+      "type": "string",
+      "description": "Optional relationship label",
+      "example": "supports"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-structure/archimate-model-exchange-api-relationship-structure.json",
+  "name": "Relationship"
+}

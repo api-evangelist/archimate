@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "name": {},
+          "type": {},
+          "layer": {},
+          "description": {}
+        }
+      }
+    },
+    "totalCount": {
+      "type": "int32",
+      "description": "Total element count",
+      "example": 85
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-structure/archimate-model-exchange-api-element-list-structure.json",
+  "name": "ElementList"
+}

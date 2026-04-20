@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "type": {},
+          "sourceId": {},
+          "targetId": {},
+          "label": {}
+        }
+      }
+    },
+    "totalCount": {
+      "type": "int32",
+      "description": "Total relationship count",
+      "example": 120
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-structure/archimate-model-exchange-api-relationship-list-structure.json",
+  "name": "RelationshipList"
+}

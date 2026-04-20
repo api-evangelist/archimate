@@ -1,0 +1,7 @@
+{
+  "id": "rel-001",
+  "type": "Assignment",
+  "sourceId": "elem-001",
+  "targetId": "elem-002",
+  "label": "supports"
+}

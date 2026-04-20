@@ -1,0 +1,160 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: ArchiMate (The Open Group)
+  description: Vocabulary for the ArchiMate enterprise architecture modeling standard, covering model exchange, elements, relationships, and views as defined in ArchiMate 3.2.
+  created: '2026-04-19'
+  modified: '2026-04-19'
+
+operational:
+  apis:
+    - name: ArchiMate Model Exchange API
+      namespace: archimate-model-exchange
+      version: '3.2'
+      baseUrl: https://api.archimate-tools.com/v1
+      status: active
+
+  resources:
+    - name: models
+      description: ArchiMate architecture models containing elements and relationships
+      apis: [archimate-model-exchange]
+      actions: [listModels, importModel, getModel, deleteModel]
+    - name: elements
+      description: Architecture elements across business, application, and technology layers
+      apis: [archimate-model-exchange]
+      actions: [listElements]
+    - name: relationships
+      description: Directed relationships between architecture elements
+      apis: [archimate-model-exchange]
+      actions: [listRelationships]
+
+  actions:
+    - name: listModels
+      httpMethod: GET
+      pattern: read
+      description: List available architecture models
+    - name: importModel
+      httpMethod: POST
+      pattern: write
+      description: Import an ArchiMate model from AMEFF format
+    - name: getModel
+      httpMethod: GET
+      pattern: read
+      description: Retrieve a specific architecture model
+    - name: deleteModel
+      httpMethod: DELETE
+      pattern: destructive
+      description: Delete an architecture model
+    - name: listElements
+      httpMethod: GET
+      pattern: read
+      description: List architecture elements in a model
+    - name: listRelationships
+      httpMethod: GET
+      pattern: read
+      description: List architecture relationships in a model
+
+  schemas:
+    architecture:
+      - name: Model
+        description: ArchiMate enterprise architecture model
+        properties: [id, name, version, language, createdAt, modifiedAt]
+      - name: ModelDetail
+        description: Extended model details with element and relationship counts
+        properties: [elementCount, relationshipCount, viewCount]
+      - name: Element
+        description: Architecture element (component, service, process, etc.)
+        properties: [id, name, type, layer, description]
+      - name: Relationship
+        description: Directed relationship between two architecture elements
+        properties: [id, type, sourceId, targetId, label]
+
+  parameters:
+    pagination:
+      - name: limit
+        description: Maximum results per page
+      - name: offset
+        description: Pagination offset
+    filters:
+      - name: layer
+        description: Filter by architecture layer
+      - name: type
+        description: Filter by element or relationship type
+      - name: format
+        description: Output format (json/xml)
+
+  enums:
+    architecture_layer:
+      - Business
+      - Application
+      - Technology
+      - Strategy
+      - Motivation
+      - Implementation
+      - Physical
+    element_type:
+      - ApplicationComponent
+      - ApplicationService
+      - DataObject
+      - BusinessProcess
+      - BusinessRole
+      - BusinessActor
+      - SystemSoftware
+      - Node
+      - NetworkPath
+      - Technology
+      - Artifact
+    relationship_type:
+      - Association
+      - Composition
+      - Aggregation
+      - Assignment
+      - Realization
+      - Serving
+      - Access
+      - Influence
+      - Triggering
+      - Flow
+      - Specialization
+
+  authentication:
+    schemes:
+      - type: bearer
+        format: JWT
+        description: Bearer token for ArchiMate repository access
+        usedBy: [ArchiMate Model Exchange API]
+
+capability:
+  workflows: []
+  personas:
+    - id: enterprise-architect
+      name: Enterprise Architect
+      description: EA practitioners creating and managing architecture models
+    - id: solution-architect
+      name: Solution Architect
+      description: Solution architects documenting application and technology architecture
+    - id: business-analyst
+      name: Business Analyst
+      description: Business analysts modeling business processes and capabilities
+  domains:
+    - name: Enterprise Architecture
+      description: Business, application, and technology architecture documentation
+    - name: Architecture Governance
+      description: Standards enforcement and architecture review processes
+    - name: Tool Interoperability
+      description: Model exchange between different EA tools
+  namespaces:
+    - type: consumed
+      namespace: archimate-model-exchange
+  binds: []
+
+crossReference:
+  - resource: models
+    operations: [listModels, importModel, getModel, deleteModel]
+    personas: [enterprise-architect, solution-architect]
+  - resource: elements
+    operations: [listElements]
+    personas: [enterprise-architect, solution-architect, business-analyst]
+  - resource: relationships
+    operations: [listRelationships]
+    personas: [enterprise-architect, solution-architect]

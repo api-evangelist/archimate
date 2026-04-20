@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "elements": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {},
+          "name": {},
+          "type": {},
+          "layer": {},
+          "description": {}
+        }
+      }
+    },
+    "totalCount": {
+      "type": "integer",
+      "description": "Total element count",
+      "example": 85
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-schema/archimate-model-exchange-api-element-list-schema.json",
+  "title": "ElementList"
+}

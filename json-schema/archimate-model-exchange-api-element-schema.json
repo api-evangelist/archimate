@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Element identifier",
+      "example": "elem-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Element name",
+      "example": "Customer Portal"
+    },
+    "type": {
+      "type": "string",
+      "description": "ArchiMate element type",
+      "enum": [
+        "ApplicationComponent",
+        "ApplicationService",
+        "DataObject",
+        "BusinessProcess",
+        "BusinessRole",
+        "BusinessActor",
+        "SystemSoftware",
+        "Node",
+        "NetworkPath",
+        "Technology",
+        "Artifact"
+      ],
+      "example": "ApplicationComponent"
+    },
+    "layer": {
+      "type": "string",
+      "description": "Architecture layer",
+      "enum": [
+        "Business",
+        "Application",
+        "Technology",
+        "Strategy",
+        "Motivation",
+        "Implementation",
+        "Physical"
+      ],
+      "example": "Application"
+    },
+    "description": {
+      "type": "string",
+      "description": "Element description",
+      "example": "Web portal for customer self-service"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-schema/archimate-model-exchange-api-element-schema.json",
+  "title": "Element"
+}

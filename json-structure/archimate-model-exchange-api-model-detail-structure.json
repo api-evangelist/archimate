@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique model identifier",
+      "example": "model-001"
+    },
+    "name": {
+      "type": "string",
+      "description": "Model name",
+      "example": "Enterprise Architecture Baseline"
+    },
+    "version": {
+      "type": "string",
+      "description": "Model version",
+      "example": "2025.1"
+    },
+    "language": {
+      "type": "string",
+      "description": "ArchiMate language version",
+      "example": "ArchiMate 3.2"
+    },
+    "elementCount": {
+      "type": "int32",
+      "description": "Number of elements in the model",
+      "example": 85
+    },
+    "relationshipCount": {
+      "type": "int32",
+      "description": "Number of relationships in the model",
+      "example": 120
+    },
+    "viewCount": {
+      "type": "int32",
+      "description": "Number of views in the model",
+      "example": 12
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/json-structure/archimate-model-exchange-api-model-detail-structure.json",
+  "name": "ModelDetail"
+}

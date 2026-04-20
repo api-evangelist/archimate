@@ -1,0 +1,105 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "archimate": "https://archimate-org.org/schema/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ErrorResponse": "archimate:ErrorResponse",
+    "message": {
+      "@id": "archimate:message",
+      "@type": "xsd:string"
+    },
+    "code": {
+      "@id": "archimate:code",
+      "@type": "xsd:integer"
+    },
+    "Model": "archimate:Model",
+    "id": {
+      "@id": "archimate:id",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "archimate:name",
+      "@type": "xsd:string"
+    },
+    "version": {
+      "@id": "archimate:version",
+      "@type": "xsd:string"
+    },
+    "language": {
+      "@id": "archimate:language",
+      "@type": "xsd:string"
+    },
+    "createdAt": {
+      "@id": "archimate:createdAt",
+      "@type": "xsd:dateTime"
+    },
+    "modifiedAt": {
+      "@id": "archimate:modifiedAt",
+      "@type": "xsd:dateTime"
+    },
+    "ModelDetail": "archimate:ModelDetail",
+    "elementCount": {
+      "@id": "archimate:elementCount",
+      "@type": "xsd:integer"
+    },
+    "relationshipCount": {
+      "@id": "archimate:relationshipCount",
+      "@type": "xsd:integer"
+    },
+    "viewCount": {
+      "@id": "archimate:viewCount",
+      "@type": "xsd:integer"
+    },
+    "ModelList": "archimate:ModelList",
+    "models": {
+      "@id": "archimate:models",
+      "@type": "xsd:string"
+    },
+    "totalCount": {
+      "@id": "archimate:totalCount",
+      "@type": "xsd:integer"
+    },
+    "ModelImportRequest": "archimate:ModelImportRequest",
+    "content": {
+      "@id": "archimate:content",
+      "@type": "xsd:string"
+    },
+    "Element": "archimate:Element",
+    "type": {
+      "@id": "archimate:type",
+      "@type": "xsd:string"
+    },
+    "layer": {
+      "@id": "archimate:layer",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "archimate:description",
+      "@type": "xsd:string"
+    },
+    "ElementList": "archimate:ElementList",
+    "elements": {
+      "@id": "archimate:elements",
+      "@type": "xsd:string"
+    },
+    "Relationship": "archimate:Relationship",
+    "sourceId": {
+      "@id": "archimate:sourceId",
+      "@type": "xsd:string"
+    },
+    "targetId": {
+      "@id": "archimate:targetId",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "archimate:label",
+      "@type": "xsd:string"
+    },
+    "RelationshipList": "archimate:RelationshipList",
+    "relationships": {
+      "@id": "archimate:relationships",
+      "@type": "xsd:string"
+    }
+  }
+}
