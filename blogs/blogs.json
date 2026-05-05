@@ -1,0 +1,13 @@
+{
+  "repo": "archimate",
+  "feeds": [
+    {
+      "source": "https://blog.opengroup.org/tag/archimate/",
+      "feed_url": "https://blog.opengroup.org/feed/",
+      "saved": 10,
+      "title": "The Open Group Blog"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:22:35Z"
+}
