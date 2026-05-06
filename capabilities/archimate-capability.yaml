@@ -1,0 +1,328 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ArchiMate Model Exchange API
+  description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise
+    architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between
+    EA tools implementing the ArchiMate 3.x standard.
+  tags:
+  - Archimate
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: archimate
+    baseUri: https://api.archimate-tools.com/v1
+    description: ArchiMate Model Exchange API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{ARCHIMATE_TOKEN}}'
+    resources:
+    - name: models
+      path: /models
+      operations:
+      - name: listmodels
+        method: GET
+        description: ArchiMate List Models
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of models to return
+        - name: offset
+          in: query
+          type: integer
+          description: Pagination offset
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: importmodel
+        method: POST
+        description: ArchiMate Import Model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-modelid
+      path: /models/{modelId}
+      operations:
+      - name: getmodel
+        method: GET
+        description: ArchiMate Get Model
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          required: true
+          description: Model identifier
+        - name: format
+          in: query
+          type: string
+          description: Output format (json or xml for AMEFF)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletemodel
+        method: DELETE
+        description: ArchiMate Delete Model
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          required: true
+          description: Model identifier
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-modelid-elements
+      path: /models/{modelId}/elements
+      operations:
+      - name: listelements
+        method: GET
+        description: ArchiMate List Elements
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          required: true
+          description: Model identifier
+        - name: layer
+          in: query
+          type: string
+          description: Filter by architecture layer
+        - name: type
+          in: query
+          type: string
+          description: Filter by element type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: models-modelid-relationships
+      path: /models/{modelId}/relationships
+      operations:
+      - name: listrelationships
+        method: GET
+        description: ArchiMate List Relationships
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          required: true
+          description: Model identifier
+        - name: type
+          in: query
+          type: string
+          description: Filter by relationship type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: archimate-rest
+    description: REST adapter for ArchiMate Model Exchange API.
+    resources:
+    - path: /models
+      name: listmodels
+      operations:
+      - method: GET
+        name: listmodels
+        description: ArchiMate List Models
+        call: archimate.listmodels
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /models
+      name: importmodel
+      operations:
+      - method: POST
+        name: importmodel
+        description: ArchiMate Import Model
+        call: archimate.importmodel
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /models/{modelId}
+      name: getmodel
+      operations:
+      - method: GET
+        name: getmodel
+        description: ArchiMate Get Model
+        call: archimate.getmodel
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /models/{modelId}
+      name: deletemodel
+      operations:
+      - method: DELETE
+        name: deletemodel
+        description: ArchiMate Delete Model
+        call: archimate.deletemodel
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /models/{modelId}/elements
+      name: listelements
+      operations:
+      - method: GET
+        name: listelements
+        description: ArchiMate List Elements
+        call: archimate.listelements
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /models/{modelId}/relationships
+      name: listrelationships
+      operations:
+      - method: GET
+        name: listrelationships
+        description: ArchiMate List Relationships
+        call: archimate.listrelationships
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: archimate-mcp
+    transport: http
+    description: MCP adapter for ArchiMate Model Exchange API for AI agent use.
+    tools:
+    - name: listmodels
+      description: ArchiMate List Models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archimate.listmodels
+      with:
+        limit: tools.limit
+        offset: tools.offset
+      inputParameters:
+      - name: limit
+        type: integer
+        description: Maximum number of models to return
+      - name: offset
+        type: integer
+        description: Pagination offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: importmodel
+      description: ArchiMate Import Model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: archimate.importmodel
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getmodel
+      description: ArchiMate Get Model
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archimate.getmodel
+      with:
+        modelId: tools.modelId
+        format: tools.format
+      inputParameters:
+      - name: modelId
+        type: string
+        description: Model identifier
+        required: true
+      - name: format
+        type: string
+        description: Output format (json or xml for AMEFF)
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletemodel
+      description: ArchiMate Delete Model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: archimate.deletemodel
+      with:
+        modelId: tools.modelId
+      inputParameters:
+      - name: modelId
+        type: string
+        description: Model identifier
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listelements
+      description: ArchiMate List Elements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archimate.listelements
+      with:
+        modelId: tools.modelId
+        layer: tools.layer
+        type: tools.type
+      inputParameters:
+      - name: modelId
+        type: string
+        description: Model identifier
+        required: true
+      - name: layer
+        type: string
+        description: Filter by architecture layer
+      - name: type
+        type: string
+        description: Filter by element type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listrelationships
+      description: ArchiMate List Relationships
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: archimate.listrelationships
+      with:
+        modelId: tools.modelId
+        type: tools.type
+      inputParameters:
+      - name: modelId
+        type: string
+        description: Model identifier
+        required: true
+      - name: type
+        type: string
+        description: Filter by relationship type
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    ARCHIMATE_TOKEN: ARCHIMATE_TOKEN
