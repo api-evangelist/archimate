@@ -1,0 +1,92 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: ArchiMate Model Exchange API — Elements
+  description: 'ArchiMate Model Exchange API — Elements. 1 operations. Lead operation: ArchiMate List Elements. Self-contained
+    Naftiko capability covering one Archimate business surface.'
+  tags:
+  - Archimate
+  - Elements
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    ARCHIMATE_API_KEY: ARCHIMATE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: model-exchange-elements
+    baseUri: https://api.archimate-tools.com/v1
+    description: ArchiMate Model Exchange API — Elements business capability. Self-contained, no shared references.
+    resources:
+    - name: models-modelId-elements
+      path: /models/{modelId}/elements
+      operations:
+      - name: listelements
+        method: GET
+        description: ArchiMate List Elements
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          description: Model identifier
+          required: true
+        - name: layer
+          in: query
+          type: string
+          description: Filter by architecture layer
+        - name: type
+          in: query
+          type: string
+          description: Filter by element type
+    authentication:
+      type: bearer
+      token: '{{env.ARCHIMATE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: model-exchange-elements-rest
+    port: 8080
+    description: REST adapter for ArchiMate Model Exchange API — Elements. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/models/{modelid}/elements
+      name: models-modelid-elements
+      description: REST surface for models-modelId-elements.
+      operations:
+      - method: GET
+        name: listelements
+        description: ArchiMate List Elements
+        call: model-exchange-elements.listelements
+        with:
+          modelId: rest.modelId
+          layer: rest.layer
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: model-exchange-elements-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for ArchiMate Model Exchange API — Elements. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: archimate-list-elements
+      description: ArchiMate List Elements
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: model-exchange-elements.listelements
+      with:
+        modelId: tools.modelId
+        layer: tools.layer
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.

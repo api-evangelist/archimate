@@ -1,7 +1,8 @@
 aid: archimate
 name: ArchiMate
-description: ArchiMate is an open and independent enterprise architecture modeling language developed by The Open Group, supporting description, analysis and visualization of architecture within and 
-  across business domains in an unambiguous way. The current version is ArchiMate 3.2.
+description: ArchiMate is an open and independent enterprise architecture modeling language developed by The Open Group, supporting
+  description, analysis and visualization of architecture within and across business domains in an unambiguous way. The current
+  version is ArchiMate 3.2.
 type: Index
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -14,13 +15,13 @@ tags:
 - Open Group
 url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/apis.yml
 created: '2024-01-01'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - aid: archimate:archimate-model-exchange-api
   name: ArchiMate Model Exchange API
-  description: API for exchanging ArchiMate models between tools and repositories using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between enterprise 
-    architecture tools.
+  description: API for exchanging ArchiMate models between tools and repositories using the Open Group ArchiMate Model Exchange
+    File Format (AMEFF). Enables interoperability between enterprise architecture tools.
   humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
   tags:
   - Enterprise Architecture
@@ -36,9 +37,16 @@ apis:
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-model-exchange-api.yaml
+  - type: NaftikoCapability
+    url: capabilities/model-exchange-elements.yaml
+  - type: NaftikoCapability
+    url: capabilities/model-exchange-models.yaml
+  - type: NaftikoCapability
+    url: capabilities/model-exchange-relationships.yaml
 - aid: archimate:archimate-repository-api
   name: ArchiMate Repository API
-  description: RESTful API for accessing and managing ArchiMate models, elements, relationships, and views stored in a central enterprise architecture repository.
+  description: RESTful API for accessing and managing ArchiMate models, elements, relationships, and views stored in a central
+    enterprise architecture repository.
   humanURL: https://www.opengroup.org/archimate-forum
   tags:
   - Repository Management
