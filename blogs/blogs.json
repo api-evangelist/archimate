@@ -2,12 +2,17 @@
   "repo": "archimate",
   "feeds": [
     {
-      "source": "https://blog.opengroup.org/tag/archimate/",
+      "source": "https://blog.opengroup.org/tag/archimate/feed/",
       "feed_url": "https://blog.opengroup.org/tag/archimate/feed/",
-      "title": "ArchiMate - The Open Group Blog",
-      "saved": 30
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://www.opengroup.org/archimate-forum/forums",
+      "error": "HTTPError"
     }
   ],
-  "post_count": 40,
-  "fetched": "2026-05-17T20:20:35Z"
+  "post_count": 41,
+  "fetched": "2026-06-01T23:35:02Z"
 }
