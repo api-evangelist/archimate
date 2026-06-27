@@ -37,11 +37,11 @@ apis:
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-model-exchange-api.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/model-exchange-elements.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/model-exchange-models.yaml
-  - type: NaftikoCapability
+  - type: X-NaftikoCapability
     url: capabilities/model-exchange-relationships.yaml
 - aid: archimate:archimate-repository-api
   name: ArchiMate Repository API
