@@ -1,0 +1,22 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.opengroup.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 22 19:06:18 2026 GMT
+  hsts: false
+- host: api.archimate-tools.com
+  https: false
+domains:
+- domain: opengroup.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
+- domain: archimate-tools.com
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: false

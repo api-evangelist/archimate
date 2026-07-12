@@ -59,6 +59,10 @@ apis:
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-repository-api.yaml
 common:
+- type: DomainSecurity
+  url: security/archimate-domain-security.yml
+- type: Authentication
+  url: authentication/archimate-authentication.yml
 - type: Portal
   url: https://www.opengroup.org/archimate-forum
 - type: Documentation
