@@ -59,6 +59,8 @@ apis:
   - type: OpenAPI
     url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-repository-api.yaml
 common:
+- type: AgenticAccess
+  url: agentic-access/archimate-agentic-access.yml
 - type: DomainSecurity
   url: security/archimate-domain-security.yml
 - type: Authentication
