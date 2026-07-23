@@ -1,0 +1,160 @@
+openapi: 3.0.3
+info:
+  title: ArchiMate Model Exchange Elements API
+  description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
+  version: '3.2'
+  x-generated-from: documentation
+  contact:
+    name: The Open Group ArchiMate Forum
+    url: https://www.opengroup.org/archimate-forum
+    email: archimate-forum@opengroup.org
+  license:
+    name: Open Group License
+    url: https://www.opengroup.org/archimate-forum/archimate-standard
+servers:
+- url: https://api.archimate-tools.com/v1
+  description: ArchiMate API Server
+security:
+- bearerAuth: []
+tags:
+- name: Elements
+  description: Architecture element management
+paths:
+  /models/{modelId}/elements:
+    get:
+      operationId: listElements
+      summary: ArchiMate List Elements
+      description: List all architecture elements in an ArchiMate model.
+      tags:
+      - Elements
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        description: Model identifier
+        schema:
+          type: string
+        example: model-001
+      - name: layer
+        in: query
+        description: Filter by architecture layer
+        schema:
+          type: string
+          enum:
+          - Business
+          - Application
+          - Technology
+          - Strategy
+          - Motivation
+          - Implementation
+          - Physical
+        example: Application
+      - name: type
+        in: query
+        description: Filter by element type
+        schema:
+          type: string
+        example: ApplicationComponent
+      responses:
+        '200':
+          description: List of architecture elements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementList'
+              examples:
+                ListElements200Example:
+                  summary: Default listElements 200 response
+                  x-microcks-default: true
+                  value:
+                    elements:
+                    - id: elem-001
+                      name: Customer Portal
+                      type: ApplicationComponent
+                      layer: Application
+                      description: Web portal for customer self-service
+                    totalCount: 85
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ElementList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Element'
+        totalCount:
+          type: integer
+          description: Total element count
+          example: 85
+    Element:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Element identifier
+          example: elem-001
+        name:
+          type: string
+          description: Element name
+          example: Customer Portal
+        type:
+          type: string
+          description: ArchiMate element type
+          enum:
+          - ApplicationComponent
+          - ApplicationService
+          - DataObject
+          - BusinessProcess
+          - BusinessRole
+          - BusinessActor
+          - SystemSoftware
+          - Node
+          - NetworkPath
+          - Technology
+          - Artifact
+          example: ApplicationComponent
+        layer:
+          type: string
+          description: Architecture layer
+          enum:
+          - Business
+          - Application
+          - Technology
+          - Strategy
+          - Motivation
+          - Implementation
+          - Physical
+          example: Application
+        description:
+          type: string
+          description: Element description
+          example: Web portal for customer self-service
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token for ArchiMate repository access

@@ -1,0 +1,149 @@
+openapi: 3.0.3
+info:
+  title: ArchiMate Model Exchange Elements Relationships API
+  description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
+  version: '3.2'
+  x-generated-from: documentation
+  contact:
+    name: The Open Group ArchiMate Forum
+    url: https://www.opengroup.org/archimate-forum
+    email: archimate-forum@opengroup.org
+  license:
+    name: Open Group License
+    url: https://www.opengroup.org/archimate-forum/archimate-standard
+servers:
+- url: https://api.archimate-tools.com/v1
+  description: ArchiMate API Server
+security:
+- bearerAuth: []
+tags:
+- name: Relationships
+  description: Architecture relationship management
+paths:
+  /models/{modelId}/relationships:
+    get:
+      operationId: listRelationships
+      summary: ArchiMate List Relationships
+      description: List all architecture relationships in an ArchiMate model.
+      tags:
+      - Relationships
+      parameters:
+      - name: modelId
+        in: path
+        required: true
+        description: Model identifier
+        schema:
+          type: string
+        example: model-001
+      - name: type
+        in: query
+        description: Filter by relationship type
+        schema:
+          type: string
+          enum:
+          - Association
+          - Composition
+          - Aggregation
+          - Assignment
+          - Realization
+          - Serving
+          - Access
+          - Influence
+          - Triggering
+          - Flow
+          - Specialization
+        example: Assignment
+      responses:
+        '200':
+          description: List of architecture relationships
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelationshipList'
+              examples:
+                ListRelationships200Example:
+                  summary: Default listRelationships 200 response
+                  x-microcks-default: true
+                  value:
+                    relationships:
+                    - id: rel-001
+                      type: Assignment
+                      sourceId: elem-001
+                      targetId: elem-002
+                    totalCount: 120
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+      - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Relationship:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Relationship identifier
+          example: rel-001
+        type:
+          type: string
+          description: ArchiMate relationship type
+          enum:
+          - Association
+          - Composition
+          - Aggregation
+          - Assignment
+          - Realization
+          - Serving
+          - Access
+          - Influence
+          - Triggering
+          - Flow
+          - Specialization
+          example: Assignment
+        sourceId:
+          type: string
+          description: Source element identifier
+          example: elem-001
+        targetId:
+          type: string
+          description: Target element identifier
+          example: elem-002
+        label:
+          type: string
+          description: Optional relationship label
+          example: supports
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    RelationshipList:
+      type: object
+      properties:
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        totalCount:
+          type: integer
+          description: Total relationship count
+          example: 120
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token for ArchiMate repository access
