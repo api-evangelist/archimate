@@ -4,7 +4,20 @@ description: ArchiMate is an open and independent enterprise architecture modeli
   description, analysis and visualization of architecture within and across business domains in an unambiguous way. The current
   version is ArchiMate 3.2.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/archimate.png
 tags:
 - Enterprise Architecture
 - Architecture Framework
@@ -18,46 +31,69 @@ created: '2024-01-01'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: archimate:archimate-model-exchange-api
-  name: ArchiMate Model Exchange API
-  description: API for exchanging ArchiMate models between tools and repositories using the Open Group ArchiMate Model Exchange
-    File Format (AMEFF). Enables interoperability between enterprise architecture tools.
+- aid: archimate:archimate-elements-api
+  name: ArchiMate Elements API
+  description: Architecture element management
   humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
   tags:
-  - Enterprise Architecture
-  - Model Exchange
-  - Interoperability
-  - XML Schema
+  - Elements
   properties:
+  - type: OpenAPI
+    url: openapi/archimate-elements-api-openapi.yml
   - type: Documentation
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
   - type: GettingStarted
     url: https://www.opengroup.org/archimate-forum/archimate-overview
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-model-exchange-api.yaml
   - type: X-NaftikoCapability
     url: capabilities/model-exchange-elements.yaml
   - type: X-NaftikoCapability
     url: capabilities/model-exchange-models.yaml
   - type: X-NaftikoCapability
     url: capabilities/model-exchange-relationships.yaml
-- aid: archimate:archimate-repository-api
-  name: ArchiMate Repository API
-  description: RESTful API for accessing and managing ArchiMate models, elements, relationships, and views stored in a central
-    enterprise architecture repository.
-  humanURL: https://www.opengroup.org/archimate-forum
+- aid: archimate:archimate-models-api
+  name: ArchiMate Models API
+  description: ArchiMate model management
+  humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
   tags:
-  - Repository Management
-  - Model Management
-  - REST API
-  - Enterprise Architecture
+  - Models
   properties:
+  - type: OpenAPI
+    url: openapi/archimate-models-api-openapi.yml
   - type: Documentation
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: GettingStarted
+    url: https://www.opengroup.org/archimate-forum/archimate-overview
+  - type: APIReference
+    url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-models.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-relationships.yaml
+- aid: archimate:archimate-relationships-api
+  name: ArchiMate Relationships API
+  description: Architecture relationship management
+  humanURL: https://www.opengroup.org/archimate-forum/archimate-overview
+  tags:
+  - Relationships
+  properties:
   - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/archimate/refs/heads/main/openapi/archimate-repository-api.yaml
+    url: openapi/archimate-relationships-api-openapi.yml
+  - type: Documentation
+    url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: GettingStarted
+    url: https://www.opengroup.org/archimate-forum/archimate-overview
+  - type: APIReference
+    url: https://pubs.opengroup.org/architecture/archimate3-doc/
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-elements.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-models.yaml
+  - type: X-NaftikoCapability
+    url: capabilities/model-exchange-relationships.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/archimate-agentic-access.yml
