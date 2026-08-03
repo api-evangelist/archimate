@@ -1,0 +1,495 @@
+openapi: 3.0.3
+info:
+  title: ArchiMate Model Exchange API
+  description: >-
+    The ArchiMate Model Exchange API provides capabilities for importing, exporting,
+    and managing ArchiMate enterprise architecture models using the Open Group
+    ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between
+    EA tools implementing the ArchiMate 3.x standard.
+  version: "3.2"
+  x-generated-from: documentation
+  contact:
+    name: The Open Group ArchiMate Forum
+    url: https://www.opengroup.org/archimate-forum
+    email: archimate-forum@opengroup.org
+  license:
+    name: Open Group License
+    url: https://www.opengroup.org/archimate-forum/archimate-standard
+servers:
+  - url: https://api.archimate-tools.com/v1
+    description: ArchiMate API Server
+tags:
+  - name: Models
+    description: ArchiMate model management
+  - name: Elements
+    description: Architecture element management
+  - name: Relationships
+    description: Architecture relationship management
+  - name: Views
+    description: Architecture view management
+paths:
+  /models:
+    get:
+      operationId: listModels
+      summary: ArchiMate List Models
+      description: List all ArchiMate models in the repository.
+      tags:
+        - Models
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of models to return
+          schema:
+            type: integer
+            default: 20
+          example: 20
+        - name: offset
+          in: query
+          description: Pagination offset
+          schema:
+            type: integer
+            default: 0
+          example: 0
+      responses:
+        '200':
+          description: List of ArchiMate models
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelList'
+              examples:
+                ListModels200Example:
+                  summary: Default listModels 200 response
+                  x-microcks-default: true
+                  value:
+                    models:
+                      - id: model-001
+                        name: Enterprise Architecture Baseline
+                        version: "2025.1"
+                        language: ArchiMate 3.2
+                    totalCount: 5
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: importModel
+      summary: ArchiMate Import Model
+      description: Import an ArchiMate model from AMEFF XML format.
+      tags:
+        - Models
+      requestBody:
+        required: true
+        content:
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/ModelImportRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ModelImportRequest'
+      responses:
+        '201':
+          description: Model imported successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model'
+        '400':
+          description: Invalid model format
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /models/{modelId}:
+    get:
+      operationId: getModel
+      summary: ArchiMate Get Model
+      description: Retrieve a specific ArchiMate model with all its elements and relationships.
+      tags:
+        - Models
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Model identifier
+          schema:
+            type: string
+          example: model-001
+        - name: format
+          in: query
+          description: Output format (json or xml for AMEFF)
+          schema:
+            type: string
+            enum: [json, xml]
+          example: json
+      responses:
+        '200':
+          description: ArchiMate model
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ModelDetail'
+              examples:
+                GetModel200Example:
+                  summary: Default getModel 200 response
+                  x-microcks-default: true
+                  value:
+                    id: model-001
+                    name: Enterprise Architecture Baseline
+                    version: "2025.1"
+                    language: ArchiMate 3.2
+                    elementCount: 85
+                    relationshipCount: 120
+                    viewCount: 12
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Model not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteModel
+      summary: ArchiMate Delete Model
+      description: Delete an ArchiMate model from the repository.
+      tags:
+        - Models
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Model identifier
+          schema:
+            type: string
+          example: model-001
+      responses:
+        '204':
+          description: Model deleted
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Model not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /models/{modelId}/elements:
+    get:
+      operationId: listElements
+      summary: ArchiMate List Elements
+      description: List all architecture elements in an ArchiMate model.
+      tags:
+        - Elements
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Model identifier
+          schema:
+            type: string
+          example: model-001
+        - name: layer
+          in: query
+          description: Filter by architecture layer
+          schema:
+            type: string
+            enum: [Business, Application, Technology, Strategy, Motivation, Implementation, Physical]
+          example: Application
+        - name: type
+          in: query
+          description: Filter by element type
+          schema:
+            type: string
+          example: ApplicationComponent
+      responses:
+        '200':
+          description: List of architecture elements
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ElementList'
+              examples:
+                ListElements200Example:
+                  summary: Default listElements 200 response
+                  x-microcks-default: true
+                  value:
+                    elements:
+                      - id: elem-001
+                        name: Customer Portal
+                        type: ApplicationComponent
+                        layer: Application
+                        description: Web portal for customer self-service
+                    totalCount: 85
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /models/{modelId}/relationships:
+    get:
+      operationId: listRelationships
+      summary: ArchiMate List Relationships
+      description: List all architecture relationships in an ArchiMate model.
+      tags:
+        - Relationships
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Model identifier
+          schema:
+            type: string
+          example: model-001
+        - name: type
+          in: query
+          description: Filter by relationship type
+          schema:
+            type: string
+            enum: [Association, Composition, Aggregation, Assignment, Realization, Serving, Access, Influence, Triggering, Flow, Specialization]
+          example: Assignment
+      responses:
+        '200':
+          description: List of architecture relationships
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RelationshipList'
+              examples:
+                ListRelationships200Example:
+                  summary: Default listRelationships 200 response
+                  x-microcks-default: true
+                  value:
+                    relationships:
+                      - id: rel-001
+                        type: Assignment
+                        sourceId: elem-001
+                        targetId: elem-002
+                    totalCount: 120
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - bearerAuth: []
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Bearer token for ArchiMate repository access
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique model identifier
+          example: model-001
+        name:
+          type: string
+          description: Model name
+          example: Enterprise Architecture Baseline
+        version:
+          type: string
+          description: Model version
+          example: "2025.1"
+        language:
+          type: string
+          description: ArchiMate language version
+          example: ArchiMate 3.2
+        createdAt:
+          type: string
+          format: date-time
+          description: Model creation timestamp
+          example: "2026-01-15T10:00:00Z"
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+          example: "2026-04-19T10:00:00Z"
+    ModelDetail:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique model identifier
+          example: model-001
+        name:
+          type: string
+          description: Model name
+          example: Enterprise Architecture Baseline
+        version:
+          type: string
+          description: Model version
+          example: "2025.1"
+        language:
+          type: string
+          description: ArchiMate language version
+          example: ArchiMate 3.2
+        elementCount:
+          type: integer
+          description: Number of elements in the model
+          example: 85
+        relationshipCount:
+          type: integer
+          description: Number of relationships in the model
+          example: 120
+        viewCount:
+          type: integer
+          description: Number of views in the model
+          example: 12
+    ModelList:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+        totalCount:
+          type: integer
+          description: Total number of models
+          example: 5
+    ModelImportRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Model name
+          example: Imported Architecture Model
+        content:
+          type: string
+          description: AMEFF XML or JSON model content
+          example: "<model>...</model>"
+    Element:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Element identifier
+          example: elem-001
+        name:
+          type: string
+          description: Element name
+          example: Customer Portal
+        type:
+          type: string
+          description: ArchiMate element type
+          enum: [ApplicationComponent, ApplicationService, DataObject, BusinessProcess, BusinessRole, BusinessActor, SystemSoftware, Node, NetworkPath, Technology, Artifact]
+          example: ApplicationComponent
+        layer:
+          type: string
+          description: Architecture layer
+          enum: [Business, Application, Technology, Strategy, Motivation, Implementation, Physical]
+          example: Application
+        description:
+          type: string
+          description: Element description
+          example: Web portal for customer self-service
+    ElementList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Element'
+        totalCount:
+          type: integer
+          description: Total element count
+          example: 85
+    Relationship:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Relationship identifier
+          example: rel-001
+        type:
+          type: string
+          description: ArchiMate relationship type
+          enum: [Association, Composition, Aggregation, Assignment, Realization, Serving, Access, Influence, Triggering, Flow, Specialization]
+          example: Assignment
+        sourceId:
+          type: string
+          description: Source element identifier
+          example: elem-001
+        targetId:
+          type: string
+          description: Target element identifier
+          example: elem-002
+        label:
+          type: string
+          description: Optional relationship label
+          example: supports
+    RelationshipList:
+      type: object
+      properties:
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        totalCount:
+          type: integer
+          description: Total relationship count
+          example: 120
+security:
+  - bearerAuth: []

@@ -1,0 +1,18 @@
+{
+  "provider": "archimate",
+  "sources": [
+    "archimate-elements-api-openapi.yml",
+    "archimate-models-api-openapi.yml",
+    "archimate-relationships-api-openapi.yml"
+  ],
+  "outputs": [
+    "archimate-elements-api-openapi.yml",
+    "archimate-models-api-openapi.yml",
+    "archimate-relationships-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
