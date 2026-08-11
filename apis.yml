@@ -46,12 +46,6 @@ apis:
     url: https://www.opengroup.org/archimate-forum/archimate-overview
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-models.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-relationships.yaml
 - aid: archimate:archimate-models-api
   name: ArchiMate Models API
   description: ArchiMate model management
@@ -67,12 +61,6 @@ apis:
     url: https://www.opengroup.org/archimate-forum/archimate-overview
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-models.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-relationships.yaml
 - aid: archimate:archimate-relationships-api
   name: ArchiMate Relationships API
   description: Architecture relationship management
@@ -88,12 +76,6 @@ apis:
     url: https://www.opengroup.org/archimate-forum/archimate-overview
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-elements.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-models.yaml
-  - type: X-NaftikoCapability
-    url: capabilities/model-exchange-relationships.yaml
 common:
 - type: AgenticAccess
   url: agentic-access/archimate-agentic-access.yml
