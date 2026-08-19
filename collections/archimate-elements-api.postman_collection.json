@@ -1,0 +1,231 @@
+{
+  "item": [
+    {
+      "id": "712444a9-db9e-4373-a09a-3af50387996c",
+      "name": "Elements",
+      "description": {
+        "content": "Architecture element management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "909cf513-1812-4afe-bd17-6ad9259c3d55",
+          "name": "ArchiMate List Elements",
+          "request": {
+            "name": "ArchiMate List Elements",
+            "description": {
+              "content": "List all architecture elements in an ArchiMate model.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "models",
+                ":modelId",
+                "elements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "layer",
+                  "value": "<string>",
+                  "description": "Filter by architecture layer"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by element type"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelId",
+                  "description": "(Required) Model identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1486568f-845f-4040-8429-a06c95281aec",
+              "name": "List of architecture elements",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    ":modelId",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "layer",
+                      "value": "Application"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ApplicationComponent"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Model identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"elem-001\",\n      \"name\": \"Customer Portal\",\n      \"type\": \"ApplicationComponent\",\n      \"layer\": \"Application\",\n      \"description\": \"Web portal for customer self-service\"\n    }\n  ],\n  \"totalCount\": 85\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b503eaa-4c4e-42ca-8419-8b3a3b92555e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "models",
+                    ":modelId",
+                    "elements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "layer",
+                      "value": "Application"
+                    },
+                    {
+                      "key": "type",
+                      "value": "ApplicationComponent"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Model identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.archimate-tools.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "928ea6f6-fdd1-4190-830e-37d1afd66873",
+    "name": "ArchiMate Model Exchange Elements API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
+      "type": "text/plain"
+    }
+  }
+}

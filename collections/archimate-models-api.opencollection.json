@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "ArchiMate Model Exchange Elements Models API",
+    "version": "3.2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ArchiMate List Models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.archimate-tools.com/v1/models",
+            "params": [
+              {
+                "name": "limit",
+                "value": "20",
+                "type": "query",
+                "description": "Maximum number of models to return"
+              },
+              {
+                "name": "offset",
+                "value": "0",
+                "type": "query",
+                "description": "Pagination offset"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "List all ArchiMate models in the repository."
+        },
+        {
+          "info": {
+            "name": "ArchiMate Import Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.archimate-tools.com/v1/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Import an ArchiMate model from AMEFF XML format."
+        },
+        {
+          "info": {
+            "name": "ArchiMate Get Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.archimate-tools.com/v1/models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "model-001",
+                "type": "path",
+                "description": "Model identifier"
+              },
+              {
+                "name": "format",
+                "value": "json",
+                "type": "query",
+                "description": "Output format (json or xml for AMEFF)"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve a specific ArchiMate model with all its elements and relationships."
+        },
+        {
+          "info": {
+            "name": "ArchiMate Delete Model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.archimate-tools.com/v1/models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "model-001",
+                "type": "path",
+                "description": "Model identifier"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Delete an ArchiMate model from the repository."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
