@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ArchiMate Model Exchange Elements API
   description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
@@ -87,17 +87,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ElementList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Element'
-        totalCount:
-          type: integer
-          description: Total element count
-          example: 85
     Element:
       type: object
       properties:
@@ -152,6 +141,17 @@ components:
           type: integer
           description: Error code
           example: 401
+    ElementList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Element'
+        totalCount:
+          type: integer
+          description: Total element count
+          example: 85
   securitySchemes:
     bearerAuth:
       type: http

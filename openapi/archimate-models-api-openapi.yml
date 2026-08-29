@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: ArchiMate Model Exchange Elements Models API
   description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
@@ -237,6 +237,35 @@ components:
           type: integer
           description: Number of views in the model
           example: 12
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique model identifier
+          example: model-001
+        name:
+          type: string
+          description: Model name
+          example: Enterprise Architecture Baseline
+        version:
+          type: string
+          description: Model version
+          example: '2025.1'
+        language:
+          type: string
+          description: ArchiMate language version
+          example: ArchiMate 3.2
+        createdAt:
+          type: string
+          format: date-time
+          description: Model creation timestamp
+          example: '2026-01-15T10:00:00Z'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+          example: '2026-04-19T10:00:00Z'
     ModelList:
       type: object
       properties:
@@ -270,35 +299,6 @@ components:
           type: integer
           description: Error code
           example: 401
-    Model:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique model identifier
-          example: model-001
-        name:
-          type: string
-          description: Model name
-          example: Enterprise Architecture Baseline
-        version:
-          type: string
-          description: Model version
-          example: '2025.1'
-        language:
-          type: string
-          description: ArchiMate language version
-          example: ArchiMate 3.2
-        createdAt:
-          type: string
-          format: date-time
-          description: Model creation timestamp
-          example: '2026-01-15T10:00:00Z'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-          example: '2026-04-19T10:00:00Z'
   securitySchemes:
     bearerAuth:
       type: http
