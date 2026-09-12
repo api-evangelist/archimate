@@ -97,6 +97,8 @@ apis:
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
 common:
+- type: Website
+  url: https://www.opengroup.org/
 - type: AgenticAccess
   url: agentic-access/archimate-agentic-access.yml
 - type: DomainSecurity
