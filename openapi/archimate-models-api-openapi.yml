@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: ArchiMate Model Exchange Elements Models API
+  title: ArchiMate Model Exchange Models API
   description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
   version: '3.2'
   x-generated-from: documentation
@@ -206,6 +206,68 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Model:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique model identifier
+          example: model-001
+        name:
+          type: string
+          description: Model name
+          example: Enterprise Architecture Baseline
+        version:
+          type: string
+          description: Model version
+          example: '2025.1'
+        language:
+          type: string
+          description: ArchiMate language version
+          example: ArchiMate 3.2
+        createdAt:
+          type: string
+          format: date-time
+          description: Model creation timestamp
+          example: '2026-01-15T10:00:00Z'
+        modifiedAt:
+          type: string
+          format: date-time
+          description: Last modification timestamp
+          example: '2026-04-19T10:00:00Z'
+    ModelImportRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Model name
+          example: Imported Architecture Model
+        content:
+          type: string
+          description: AMEFF XML or JSON model content
+          example: <model>...</model>
+    ModelList:
+      type: object
+      properties:
+        models:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model'
+        totalCount:
+          type: integer
+          description: Total number of models
+          example: 5
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     ModelDetail:
       type: object
       properties:
@@ -237,68 +299,6 @@ components:
           type: integer
           description: Number of views in the model
           example: 12
-    Model:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique model identifier
-          example: model-001
-        name:
-          type: string
-          description: Model name
-          example: Enterprise Architecture Baseline
-        version:
-          type: string
-          description: Model version
-          example: '2025.1'
-        language:
-          type: string
-          description: ArchiMate language version
-          example: ArchiMate 3.2
-        createdAt:
-          type: string
-          format: date-time
-          description: Model creation timestamp
-          example: '2026-01-15T10:00:00Z'
-        modifiedAt:
-          type: string
-          format: date-time
-          description: Last modification timestamp
-          example: '2026-04-19T10:00:00Z'
-    ModelList:
-      type: object
-      properties:
-        models:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model'
-        totalCount:
-          type: integer
-          description: Total number of models
-          example: 5
-    ModelImportRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Model name
-          example: Imported Architecture Model
-        content:
-          type: string
-          description: AMEFF XML or JSON model content
-          example: <model>...</model>
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,9 +1,7 @@
 {
   "provider": "archimate",
   "sources": [
-    "archimate-elements-api-openapi.yml",
-    "archimate-models-api-openapi.yml",
-    "archimate-relationships-api-openapi.yml"
+    "_ae-authored/archimate-model-exchange-api.yaml"
   ],
   "outputs": [
     "archimate-elements-api-openapi.yml",
@@ -14,10 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "archimate-elements-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "archimate-models-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "archimate-relationships-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "archimate-model-exchange-api.yaml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "archimate-elements-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "archimate-models-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "archimate-relationships-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

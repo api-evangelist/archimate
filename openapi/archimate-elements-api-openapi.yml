@@ -87,6 +87,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     Element:
       type: object
       properties:
@@ -130,17 +141,6 @@ components:
           type: string
           description: Element description
           example: Web portal for customer self-service
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     ElementList:
       type: object
       properties:

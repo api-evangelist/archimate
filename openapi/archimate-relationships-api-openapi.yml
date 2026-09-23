@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: ArchiMate Model Exchange Elements Relationships API
+  title: ArchiMate Model Exchange Relationships API
   description: The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.
   version: '3.2'
   x-generated-from: documentation
@@ -84,6 +84,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    RelationshipList:
+      type: object
+      properties:
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        totalCount:
+          type: integer
+          description: Total relationship count
+          example: 120
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     Relationship:
       type: object
       properties:
@@ -119,28 +141,6 @@ components:
           type: string
           description: Optional relationship label
           example: supports
-    RelationshipList:
-      type: object
-      properties:
-        relationships:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
-        totalCount:
-          type: integer
-          description: Total relationship count
-          example: 120
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
   securitySchemes:
     bearerAuth:
       type: http
