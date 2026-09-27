@@ -235,17 +235,6 @@ components:
           format: date-time
           description: Last modification timestamp
           example: '2026-04-19T10:00:00Z'
-    ModelImportRequest:
-      type: object
-      properties:
-        name:
-          type: string
-          description: Model name
-          example: Imported Architecture Model
-        content:
-          type: string
-          description: AMEFF XML or JSON model content
-          example: <model>...</model>
     ModelList:
       type: object
       properties:
@@ -257,17 +246,6 @@ components:
           type: integer
           description: Total number of models
           example: 5
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     ModelDetail:
       type: object
       properties:
@@ -299,6 +277,28 @@ components:
           type: integer
           description: Number of views in the model
           example: 12
+    ModelImportRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Model name
+          example: Imported Architecture Model
+        content:
+          type: string
+          description: AMEFF XML or JSON model content
+          example: <model>...</model>
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
   securitySchemes:
     bearerAuth:
       type: http

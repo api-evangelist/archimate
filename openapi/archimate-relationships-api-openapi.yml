@@ -84,28 +84,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    RelationshipList:
-      type: object
-      properties:
-        relationships:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
-        totalCount:
-          type: integer
-          description: Total relationship count
-          example: 120
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     Relationship:
       type: object
       properties:
@@ -141,6 +119,28 @@ components:
           type: string
           description: Optional relationship label
           example: supports
+    RelationshipList:
+      type: object
+      properties:
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        totalCount:
+          type: integer
+          description: Total relationship count
+          example: 120
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
   securitySchemes:
     bearerAuth:
       type: http
