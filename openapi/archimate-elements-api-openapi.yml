@@ -87,6 +87,28 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ElementList:
+      type: object
+      properties:
+        elements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Element'
+        totalCount:
+          type: integer
+          description: Total element count
+          example: 85
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
     Element:
       type: object
       properties:
@@ -130,28 +152,6 @@ components:
           type: string
           description: Element description
           example: Web portal for customer self-service
-    ElementList:
-      type: object
-      properties:
-        elements:
-          type: array
-          items:
-            $ref: '#/components/schemas/Element'
-        totalCount:
-          type: integer
-          description: Total element count
-          example: 85
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
   securitySchemes:
     bearerAuth:
       type: http

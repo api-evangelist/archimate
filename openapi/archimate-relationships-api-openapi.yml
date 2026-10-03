@@ -119,17 +119,6 @@ components:
           type: string
           description: Optional relationship label
           example: supports
-    RelationshipList:
-      type: object
-      properties:
-        relationships:
-          type: array
-          items:
-            $ref: '#/components/schemas/Relationship'
-        totalCount:
-          type: integer
-          description: Total relationship count
-          example: 120
     ErrorResponse:
       type: object
       properties:
@@ -141,6 +130,17 @@ components:
           type: integer
           description: Error code
           example: 401
+    RelationshipList:
+      type: object
+      properties:
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/Relationship'
+        totalCount:
+          type: integer
+          description: Total relationship count
+          example: 120
   securitySchemes:
     bearerAuth:
       type: http
