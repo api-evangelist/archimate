@@ -119,17 +119,6 @@ components:
           type: string
           description: Optional relationship label
           example: supports
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-          example: Unauthorized
-        code:
-          type: integer
-          description: Error code
-          example: 401
     RelationshipList:
       type: object
       properties:
@@ -141,6 +130,17 @@ components:
           type: integer
           description: Total relationship count
           example: 120
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+          example: Unauthorized
+        code:
+          type: integer
+          description: Error code
+          example: 401
   securitySchemes:
     bearerAuth:
       type: http
