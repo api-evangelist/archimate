@@ -97,6 +97,8 @@ apis:
   - type: APIReference
     url: https://pubs.opengroup.org/architecture/archimate3-doc/
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/archimate/overview
 - type: Plans
   url: plans/archimate-plans-pricing.yml
 - type: RateLimits
