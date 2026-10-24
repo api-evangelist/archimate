@@ -1,192 +1,613 @@
 {
+  "info": {
+    "_postman_id": "3ddf6008-f474-4756-acb6-60ada4f67d74",
+    "name": "ArchiMate Model Exchange Models API",
+    "description": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:59:19.000Z",
+    "updatedAt": "2026-10-21T20:59:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3ddf6008-f474-4756-acb6-60ada4f67d74"
+  },
   "item": [
     {
-      "id": "f4332348-81b6-4126-bf83-876796d459e7",
-      "name": "Models",
-      "description": {
-        "content": "ArchiMate model management",
-        "type": "text/plain"
-      },
+      "name": "models",
       "item": [
         {
-          "id": "b8775dfe-7c9e-4882-a481-7b8bf8139b70",
-          "name": "ArchiMate List Models",
-          "request": {
-            "name": "ArchiMate List Models",
-            "description": {
-              "content": "List all ArchiMate models in the repository.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "{modelId}",
+          "item": [
+            {
+              "name": "ArchiMate Get Model",
+              "id": "5e22edb7-693e-492e-b031-351ecfe615f8",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:modelId?format=json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":modelId"
+                  ],
+                  "query": [
+                    {
+                      "description": "Output format (json or xml for AMEFF)",
+                      "key": "format",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "83470f0c-d65d-4197-a70e-ea319b83e790",
+                      "key": "modelId",
+                      "value": "<string>",
+                      "description": "(Required) Model identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve a specific ArchiMate model with all its elements and relationships."
+              },
+              "response": [
                 {
-                  "disabled": false,
-                  "key": "limit",
-                  "value": "20",
-                  "description": "Maximum number of models to return"
+                  "id": "b8f3fff1-429a-44c9-be02-915c2b153717",
+                  "name": "ArchiMate model",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId?format=json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format (json or xml for AMEFF)",
+                          "key": "format",
+                          "value": "json"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"language\": \"<string>\",\n  \"elementCount\": \"<integer>\",\n  \"relationshipCount\": \"<integer>\",\n  \"viewCount\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-b8f3fff1-429a-44c9-be02-915c2b153717"
                 },
                 {
-                  "disabled": false,
-                  "key": "offset",
-                  "value": "0",
-                  "description": "Pagination offset"
+                  "id": "9442a8d6-8539-4f63-98cc-472486730fd9",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId?format=json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format (json or xml for AMEFF)",
+                          "key": "format",
+                          "value": "json"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-9442a8d6-8539-4f63-98cc-472486730fd9"
+                },
+                {
+                  "id": "89db889b-235a-4aa5-ad8b-11c7036ff295",
+                  "name": "Model not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId?format=json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Output format (json or xml for AMEFF)",
+                          "key": "format",
+                          "value": "json"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-89db889b-235a-4aa5-ad8b-11c7036ff295"
                 }
               ],
-              "variable": []
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-5e22edb7-693e-492e-b031-351ecfe615f8"
             },
+            {
+              "name": "ArchiMate Delete Model",
+              "id": "ec9165c4-3f15-4af1-bf69-8cf5917b5f5e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models/:modelId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models",
+                    ":modelId"
+                  ],
+                  "variable": [
+                    {
+                      "id": "9d9dd7b8-4279-4e4b-a02a-aff46fc4558e",
+                      "key": "modelId",
+                      "value": "<string>",
+                      "description": "(Required) Model identifier"
+                    }
+                  ]
+                },
+                "description": "Delete an ArchiMate model from the repository."
+              },
+              "response": [
+                {
+                  "id": "27958d9d-b34b-4941-9ba3-876d64215e6c",
+                  "name": "Model deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-27958d9d-b34b-4941-9ba3-876d64215e6c"
+                },
+                {
+                  "id": "3b5d4e7d-e68f-4e8c-b0b4-4c6c075aa2c0",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-3b5d4e7d-e68f-4e8c-b0b4-4c6c075aa2c0"
+                },
+                {
+                  "id": "8a41350c-7570-428a-b2dd-901d376e089f",
+                  "name": "Model not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "modelId"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                  "createdAt": "2026-10-21T20:59:19.000Z",
+                  "updatedAt": "2026-10-21T20:59:19.000Z",
+                  "uid": "35240-8a41350c-7570-428a-b2dd-901d376e089f"
+                }
+              ],
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-ec9165c4-3f15-4af1-bf69-8cf5917b5f5e"
+            }
+          ],
+          "id": "16cbaf76-90fe-4d43-9495-e6a9c04b9399",
+          "createdAt": "2026-10-21T20:59:19.000Z",
+          "updatedAt": "2026-10-21T20:59:19.000Z",
+          "uid": "35240-16cbaf76-90fe-4d43-9495-e6a9c04b9399"
+        },
+        {
+          "name": "ArchiMate List Models",
+          "id": "a5877d0b-6849-4d7d-87ea-d438ceba76b0",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/models?limit=20&offset=0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ],
+              "query": [
+                {
+                  "description": "Maximum number of models to return",
+                  "key": "limit",
+                  "value": "20"
+                },
+                {
+                  "description": "Pagination offset",
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "List all ArchiMate models in the repository."
+          },
+          "response": [
+            {
+              "id": "a083c6e1-9987-45c8-88b5-0210f44a8306",
+              "name": "List of ArchiMate models",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of models to return",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"models\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"language\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"modifiedAt\": \"<dateTime>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"version\": \"<string>\",\n      \"language\": \"<string>\",\n      \"createdAt\": \"<dateTime>\",\n      \"modifiedAt\": \"<dateTime>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-a083c6e1-9987-45c8-88b5-0210f44a8306"
+            },
+            {
+              "id": "19b70b9e-11f2-4c46-9684-80c9ab47950f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/models?limit=20&offset=0",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ],
+                  "query": [
+                    {
+                      "description": "Maximum number of models to return",
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "description": "Pagination offset",
+                      "key": "offset",
+                      "value": "0"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-19b70b9e-11f2-4c46-9684-80c9ab47950f"
+            }
+          ],
+          "createdAt": "2026-10-21T20:59:19.000Z",
+          "updatedAt": "2026-10-21T20:59:19.000Z",
+          "uid": "35240-a5877d0b-6849-4d7d-87ea-d438ceba76b0"
+        },
+        {
+          "name": "ArchiMate Import Model",
+          "id": "6ec4e1aa-68a8-4dd2-bd30-513173509df6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{bearerToken}}"
+                  "value": "{{bearerToken}}",
+                  "type": "string"
                 }
               ]
-            }
-          },
-          "response": [
-            {
-              "id": "195e4951-4c2b-412a-8df7-012e9ebe7ae4",
-              "name": "List of ArchiMate models",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"models\": [\n    {\n      \"id\": \"model-001\",\n      \"name\": \"Enterprise Architecture Baseline\",\n      \"version\": \"2025.1\",\n      \"language\": \"ArchiMate 3.2\"\n    }\n  ],\n  \"totalCount\": 5\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
             },
-            {
-              "id": "b7cfae5d-d49d-4b5e-8ae4-1878cce87f77",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "limit",
-                      "value": "20"
-                    },
-                    {
-                      "key": "offset",
-                      "value": "0"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f1629ab2-d804-4f44-b443-c0e63fff8c4e",
-          "name": "ArchiMate Import Model",
-          "request": {
-            "name": "ArchiMate Import Model",
-            "description": {
-              "content": "Import an ArchiMate model from AMEFF XML format.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -197,630 +618,206 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"name\": \"<string>\",\n  \"content\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/models",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "models"
+              ]
+            },
+            "description": "Import an ArchiMate model from AMEFF XML format."
           },
           "response": [
             {
-              "id": "49ddc815-fe6e-4df3-9729-be982afba5a6",
+              "id": "29f6b67a-66b8-4b11-94c0-ca57577089ea",
               "name": "Model imported successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "models"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"Imported Architecture Model\",\n  \"content\": \"<model>...</model>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"content\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"id\": \"model-001\",\n  \"name\": \"Enterprise Architecture Baseline\",\n  \"version\": \"2025.1\",\n  \"language\": \"ArchiMate 3.2\",\n  \"createdAt\": \"2026-01-15T10:00:00Z\",\n  \"modifiedAt\": \"2026-04-19T10:00:00Z\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"version\": \"<string>\",\n  \"language\": \"<string>\",\n  \"createdAt\": \"<dateTime>\",\n  \"modifiedAt\": \"<dateTime>\"\n}",
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-29f6b67a-66b8-4b11-94c0-ca57577089ea"
             },
             {
-              "id": "42ca2f13-72a7-4dcb-98ac-915349761af7",
+              "id": "6e7f4810-8bf2-429b-aa8b-ae529aadaa3e",
               "name": "Invalid model format",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "models"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"Imported Architecture Model\",\n  \"content\": \"<model>...</model>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"content\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-6e7f4810-8bf2-429b-aa8b-ae529aadaa3e"
             },
             {
-              "id": "216a6b3d-62c6-469c-8a23-3d36e89dec8b",
+              "id": "d66a3774-b548-49f7-8946-b36b5df7dff7",
               "name": "Unauthorized",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "models"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"name\": \"Imported Architecture Model\",\n  \"content\": \"<model>...</model>\"\n}",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"content\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "models"
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+              "createdAt": "2026-10-21T20:59:19.000Z",
+              "updatedAt": "2026-10-21T20:59:19.000Z",
+              "uid": "35240-d66a3774-b548-49f7-8946-b36b5df7dff7"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "040c4a8b-06b4-4a04-9b51-13ac61c916ac",
-          "name": "ArchiMate Get Model",
-          "request": {
-            "name": "ArchiMate Get Model",
-            "description": {
-              "content": "Retrieve a specific ArchiMate model with all its elements and relationships.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models",
-                ":modelId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "format",
-                  "value": "<string>",
-                  "description": "Output format (json or xml for AMEFF)"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "modelId",
-                  "description": "(Required) Model identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "e3be6785-17fc-4ee3-9e2b-5e3b77916487",
-              "name": "ArchiMate model",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "format",
-                      "value": "json"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"model-001\",\n  \"name\": \"Enterprise Architecture Baseline\",\n  \"version\": \"2025.1\",\n  \"language\": \"ArchiMate 3.2\",\n  \"elementCount\": 85,\n  \"relationshipCount\": 120,\n  \"viewCount\": 12\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ef9e84d8-ce32-4714-93a4-90f14fb18a74",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "format",
-                      "value": "json"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a4d081d9-4825-4367-b63b-de905da87d9d",
-              "name": "Model not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "format",
-                      "value": "json"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "cdf4a7c6-88a9-4634-8a5b-83cc7d5d7421",
-          "name": "ArchiMate Delete Model",
-          "request": {
-            "name": "ArchiMate Delete Model",
-            "description": {
-              "content": "Delete an ArchiMate model from the repository.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models",
-                ":modelId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "modelId",
-                  "description": "(Required) Model identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "52e304f0-8028-4aa5-aa7e-180002fd3c2b",
-              "name": "Model deleted",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "No Content",
-              "code": 204,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "64730375-65dd-4b22-9f76-cc2395b21d63",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7f55e887-102a-4d4b-9a63-c0de60ef5531",
-              "name": "Model not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:59:19.000Z",
+          "updatedAt": "2026-10-21T20:59:19.000Z",
+          "uid": "35240-6ec4e1aa-68a8-4dd2-bd30-513173509df6"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.archimate-tools.com/v1",
-      "key": "baseUrl"
+      "id": "711d4bc8-3c21-48c3-9501-4c8b9d8039d6",
+      "createdAt": "2026-10-21T20:59:19.000Z",
+      "updatedAt": "2026-10-21T20:59:19.000Z",
+      "uid": "35240-711d4bc8-3c21-48c3-9501-4c8b9d8039d6"
     }
   ],
   "auth": {
@@ -828,17 +825,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "eaefd473-285f-4b27-8284-6465bbc61508",
-    "name": "ArchiMate Model Exchange Elements Models API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.archimate-tools.com/v1"
     }
-  }
+  ]
 }

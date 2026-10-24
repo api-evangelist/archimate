@@ -1,213 +1,226 @@
 {
+  "info": {
+    "_postman_id": "1e1f3c48-0589-4991-a050-f979ed454a50",
+    "name": "ArchiMate Model Exchange Elements API",
+    "description": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:59:14.000Z",
+    "updatedAt": "2026-10-21T20:59:15.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1e1f3c48-0589-4991-a050-f979ed454a50"
+  },
   "item": [
     {
-      "id": "712444a9-db9e-4373-a09a-3af50387996c",
-      "name": "Elements",
-      "description": {
-        "content": "Architecture element management",
-        "type": "text/plain"
-      },
+      "name": "models",
       "item": [
         {
-          "id": "909cf513-1812-4afe-bd17-6ad9259c3d55",
-          "name": "ArchiMate List Elements",
-          "request": {
-            "name": "ArchiMate List Elements",
-            "description": {
-              "content": "List all architecture elements in an ArchiMate model.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models",
-                ":modelId",
-                "elements"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "layer",
-                  "value": "<string>",
-                  "description": "Filter by architecture layer"
-                },
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "<string>",
-                  "description": "Filter by element type"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "modelId",
-                  "description": "(Required) Model identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{modelId}",
+          "item": [
             {
-              "id": "1486568f-845f-4040-8429-a06c95281aec",
-              "name": "List of architecture elements",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId",
-                    "elements"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "layer",
-                      "value": "Application"
-                    },
-                    {
-                      "key": "type",
-                      "value": "ApplicationComponent"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "elements",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "ArchiMate List Elements",
+                  "id": "1f5644c7-987a-4dc1-9d65-103a51b9d76f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId/elements?layer=Implementation&type=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId",
+                        "elements"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by architecture layer",
+                          "key": "layer",
+                          "value": "Implementation"
+                        },
+                        {
+                          "description": "Filter by element type",
+                          "key": "type",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "e166a620-c996-454e-ba67-5ff711572d35",
+                          "key": "modelId",
+                          "value": "<string>",
+                          "description": "(Required) Model identifier"
+                        }
+                      ]
+                    },
+                    "description": "List all architecture elements in an ArchiMate model."
+                  },
+                  "response": [
+                    {
+                      "id": "9058a25f-3226-498d-bc84-46d497c92944",
+                      "name": "List of architecture elements",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/models/:modelId/elements?layer=Implementation&type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models",
+                            ":modelId",
+                            "elements"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by architecture layer",
+                              "key": "layer",
+                              "value": "Implementation"
+                            },
+                            {
+                              "description": "Filter by element type",
+                              "key": "type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"elements\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"DataObject\",\n      \"layer\": \"Motivation\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"type\": \"Node\",\n      \"layer\": \"Technology\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:59:15.000Z",
+                      "updatedAt": "2026-10-21T20:59:15.000Z",
+                      "uid": "35240-9058a25f-3226-498d-bc84-46d497c92944"
+                    },
+                    {
+                      "id": "6a913557-2e76-4215-bd4b-74fccf96cee2",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/models/:modelId/elements?layer=Implementation&type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models",
+                            ":modelId",
+                            "elements"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by architecture layer",
+                              "key": "layer",
+                              "value": "Implementation"
+                            },
+                            {
+                              "description": "Filter by element type",
+                              "key": "type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:59:15.000Z",
+                      "updatedAt": "2026-10-21T20:59:15.000Z",
+                      "uid": "35240-6a913557-2e76-4215-bd4b-74fccf96cee2"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:59:15.000Z",
+                  "updatedAt": "2026-10-21T20:59:15.000Z",
+                  "uid": "35240-1f5644c7-987a-4dc1-9d65-103a51b9d76f"
                 }
               ],
-              "body": "{\n  \"elements\": [\n    {\n      \"id\": \"elem-001\",\n      \"name\": \"Customer Portal\",\n      \"type\": \"ApplicationComponent\",\n      \"layer\": \"Application\",\n      \"description\": \"Web portal for customer self-service\"\n    }\n  ],\n  \"totalCount\": 85\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "5b503eaa-4c4e-42ca-8419-8b3a3b92555e",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId",
-                    "elements"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "layer",
-                      "value": "Application"
-                    },
-                    {
-                      "key": "type",
-                      "value": "ApplicationComponent"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "054f02d4-409f-4284-b79c-9d4505cefae6",
+              "createdAt": "2026-10-21T20:59:15.000Z",
+              "updatedAt": "2026-10-21T20:59:15.000Z",
+              "uid": "35240-054f02d4-409f-4284-b79c-9d4505cefae6"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "607a1ec2-1cdb-40d1-95dc-b2dba50ea7f8",
+          "createdAt": "2026-10-21T20:59:15.000Z",
+          "updatedAt": "2026-10-21T20:59:15.000Z",
+          "uid": "35240-607a1ec2-1cdb-40d1-95dc-b2dba50ea7f8"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.archimate-tools.com/v1",
-      "key": "baseUrl"
+      "id": "160a4149-5f97-4c86-b13d-ba26134cc447",
+      "createdAt": "2026-10-21T20:59:15.000Z",
+      "updatedAt": "2026-10-21T20:59:15.000Z",
+      "uid": "35240-160a4149-5f97-4c86-b13d-ba26134cc447"
     }
   ],
   "auth": {
@@ -215,17 +228,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "928ea6f6-fdd1-4190-830e-37d1afd66873",
-    "name": "ArchiMate Model Exchange Elements API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.archimate-tools.com/v1"
     }
-  }
+  ]
 }

@@ -1,199 +1,211 @@
 {
+  "info": {
+    "_postman_id": "2e6940e2-cf6a-42d8-8426-ca1fcf60b148",
+    "name": "ArchiMate Model Exchange Relationships API",
+    "description": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:59:24.000Z",
+    "updatedAt": "2026-10-21T20:59:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2e6940e2-cf6a-42d8-8426-ca1fcf60b148"
+  },
   "item": [
     {
-      "id": "5d13379b-a5f8-4172-b2d1-3df2d9f7fd13",
-      "name": "Relationships",
-      "description": {
-        "content": "Architecture relationship management",
-        "type": "text/plain"
-      },
+      "name": "models",
       "item": [
         {
-          "id": "35f1a98e-48a4-424d-9ce1-ce98e34f02e4",
-          "name": "ArchiMate List Relationships",
-          "request": {
-            "name": "ArchiMate List Relationships",
-            "description": {
-              "content": "List all architecture relationships in an ArchiMate model.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "models",
-                ":modelId",
-                "relationships"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "type",
-                  "value": "<string>",
-                  "description": "Filter by relationship type"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "modelId",
-                  "description": "(Required) Model identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{modelId}",
+          "item": [
             {
-              "id": "52acbe37-6641-4a31-ba30-94872634f41f",
-              "name": "List of architecture relationships",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId",
-                    "relationships"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "Assignment"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "relationships",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "ArchiMate List Relationships",
+                  "id": "b09572c9-75ca-4272-812a-feaa18a3ed6c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "{{bearerToken}}",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/models/:modelId/relationships?type=Flow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "models",
+                        ":modelId",
+                        "relationships"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by relationship type",
+                          "key": "type",
+                          "value": "Flow"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "41c0415a-545e-42b1-8b1b-fdee6b908a45",
+                          "key": "modelId",
+                          "value": "<string>",
+                          "description": "(Required) Model identifier"
+                        }
+                      ]
+                    },
+                    "description": "List all architecture relationships in an ArchiMate model."
+                  },
+                  "response": [
+                    {
+                      "id": "ad2ca184-e531-42a8-a8dd-f3fb5cb838ef",
+                      "name": "List of architecture relationships",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/models/:modelId/relationships?type=Flow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models",
+                            ":modelId",
+                            "relationships"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by relationship type",
+                              "key": "type",
+                              "value": "Flow"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"relationships\": [\n    {\n      \"id\": \"<string>\",\n      \"type\": \"Serving\",\n      \"sourceId\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"label\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"type\": \"Specialization\",\n      \"sourceId\": \"<string>\",\n      \"targetId\": \"<string>\",\n      \"label\": \"<string>\"\n    }\n  ],\n  \"totalCount\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:59:25.000Z",
+                      "updatedAt": "2026-10-21T20:59:25.000Z",
+                      "uid": "35240-ad2ca184-e531-42a8-a8dd-f3fb5cb838ef"
+                    },
+                    {
+                      "id": "14b18efa-135d-40c4-9de9-5b7c082a312f",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/models/:modelId/relationships?type=Flow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "models",
+                            ":modelId",
+                            "relationships"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by relationship type",
+                              "key": "type",
+                              "value": "Flow"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<integer>\"\n}",
+                      "createdAt": "2026-10-21T20:59:25.000Z",
+                      "updatedAt": "2026-10-21T20:59:25.000Z",
+                      "uid": "35240-14b18efa-135d-40c4-9de9-5b7c082a312f"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:59:24.000Z",
+                  "updatedAt": "2026-10-21T20:59:24.000Z",
+                  "uid": "35240-b09572c9-75ca-4272-812a-feaa18a3ed6c"
                 }
               ],
-              "body": "{\n  \"relationships\": [\n    {\n      \"id\": \"rel-001\",\n      \"type\": \"Assignment\",\n      \"sourceId\": \"elem-001\",\n      \"targetId\": \"elem-002\"\n    }\n  ],\n  \"totalCount\": 120\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f3ea3b64-3914-4dba-8478-0bdb5cd178f1",
-              "name": "Unauthorized",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "models",
-                    ":modelId",
-                    "relationships"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "type",
-                      "value": "Assignment"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "modelId",
-                      "description": "(Required) Model identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"Unauthorized\",\n  \"code\": 401\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "01d8364a-4ba4-4658-aa94-f3ba00a385fc",
+              "createdAt": "2026-10-21T20:59:24.000Z",
+              "updatedAt": "2026-10-21T20:59:24.000Z",
+              "uid": "35240-01d8364a-4ba4-4658-aa94-f3ba00a385fc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "42c6eedc-1fd2-4109-ab7c-cba0d3b679cb",
+          "createdAt": "2026-10-21T20:59:24.000Z",
+          "updatedAt": "2026-10-21T20:59:24.000Z",
+          "uid": "35240-42c6eedc-1fd2-4109-ab7c-cba0d3b679cb"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://api.archimate-tools.com/v1",
-      "key": "baseUrl"
+      "id": "5c586354-adb0-4f95-a26f-75b8a2d8a2bb",
+      "createdAt": "2026-10-21T20:59:24.000Z",
+      "updatedAt": "2026-10-21T20:59:24.000Z",
+      "uid": "35240-5c586354-adb0-4f95-a26f-75b8a2d8a2bb"
     }
   ],
   "auth": {
@@ -201,17 +213,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "200e4017-92f0-4361-9e1e-2086f85fed3a",
-    "name": "ArchiMate Model Exchange Elements Relationships API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The ArchiMate Model Exchange API provides capabilities for importing, exporting, and managing ArchiMate enterprise architecture models using the Open Group ArchiMate Model Exchange File Format (AMEFF). Enables interoperability between EA tools implementing the ArchiMate 3.x standard.\n\nContact Support:\n Name: The Open Group ArchiMate Forum\n Email: archimate-forum@opengroup.org",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.archimate-tools.com/v1"
     }
-  }
+  ]
 }
